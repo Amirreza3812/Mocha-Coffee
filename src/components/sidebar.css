@@ -1,0 +1,42 @@
+
+
+.btn {
+  background: var(--black) ;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin: 0.5rem 0 0 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all ease 300ms;
+}
+
+.btn::before,.btn::after {
+  content: "";
+  background: var(--white);
+  height: 2px;
+  width: 1rem;
+  position: absolute;
+}
+
+.btn::before{
+  top: 1rem;
+}
+/* 
+if this actived :
+${props => props.clicked? "rotate(135deg)":"rotate(0)"} 
+and top change to 1.5
+*/
+
+.btn::after{
+  top: 1.5rem;
+}
+/* 
+if this actived :
+${props => props.clicked? "rotate(-135deg)":"rotate(0)"} 
+and top change to 1.2
+*/

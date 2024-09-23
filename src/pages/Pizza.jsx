@@ -1,7 +1,7 @@
 import React from "react";
 import MotionHoc from "./MotionHoc";
 import "../styles/soon.css";
-const ProjectsComponent = () => {
+const PizzaComponent = () => {
   return (
     <>
       <h1 className="comming-soon">COMMING SOON</h1>
@@ -9,6 +9,6 @@ const ProjectsComponent = () => {
   );
 };
 
-const Projects = MotionHoc(ProjectsComponent);
+const Pizza = MotionHoc(PizzaComponent);
 
-export default Projects;
+export default Pizza;

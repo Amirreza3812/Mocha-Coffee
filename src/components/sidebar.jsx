@@ -5,11 +5,11 @@ import { Link, NavLink } from "react-router-dom";
 
 // all svg files
 import logo from "../assests/logo.svg";
-import Home from "../assests/home-solid.svg";
-import Team from "../assests/social.svg";
-import Calender from "../assests/sceduled.svg";
-import Projects from "../assests/starred.svg";
-import Documents from "../assests/draft.svg";
+import Coffe from "../assests/Coffe.svg";
+import Cake from "../assests/Cake.svg";
+import Drinks from "../assests/Drink.svg";
+import Pizza from "../assests/Pizza.svg";
+// import Documents from "../assests/draft.svg";
 // import PowerOff from "../assests/power-off-solid.svg";
 import Coffeback from "../assests/CoffeBack/coffe-2.jpeg"
 
@@ -32,7 +32,6 @@ const Button = styled.button`
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  margin: 0.5rem 0 0 0.5rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -219,29 +218,30 @@ const Sidebar = () => {
     <>
       <img src={Coffeback} alt="Coffe-img" className="Back-head-img"/>
     <Container>
+     
+      <SidebarContainer className="container">
       <Button clicked={click} onClick={() => handelClick()}>
         Click
       </Button>
-      <SidebarContainer className="container">
         <Logo>
           <img src={logo} alt="logo" />
         </Logo>
         <SlickBar clicked={click}>
           <Item onClick={() => setClick(false)} exact to="/">
-            <img src={Home} alt="Home" />
-            <Text clicked={click}>Home</Text>
+            <img src={Coffe} alt="COFEE" />
+            <Text clicked={click}>COFFE</Text>
           </Item>
-          <Item onClick={() => setClick(false)} to="/team">
-            <img src={Team} alt="Team" />
-            <Text clicked={click}>Team</Text>
+          <Item onClick={() => setClick(false)} to="/cake">
+            <img src={Cake} alt="cake" />
+            <Text clicked={click}>CAKE</Text>
           </Item>
-          <Item onClick={() => setClick(false)} to="/calender">
-            <img src={Calender} alt="calender" />
-            <Text clicked={click}>Calender</Text>
+          <Item onClick={() => setClick(false)} to="/drinks">
+            <img src={Drinks} alt="drinks" />
+            <Text clicked={click}>DRINKS</Text>
           </Item>
-          <Item onClick={() => setClick(false)} to="/projects">
-            <img src={Projects} alt="Projects" />
-            <Text clicked={click}>Projects</Text>
+          <Item onClick={() => setClick(false)} to="/soon">
+            <img src={Pizza} alt="soon" />
+            <Text clicked={click}>SOON</Text>
           </Item>
           {/* <Item onClick={() => setClick(false)} to="/document">
             <img src={Documents} alt="Documents" />

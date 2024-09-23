@@ -1,10 +1,10 @@
 import "./App.css";
 import Sidebar from "./components/sidebar";
-import Home from "./pages/Home";
-import Team from "./pages/Team";
-import Calender from "./pages/Calender";
-import Projects from "./pages/Projects";
-import Document from "./pages/Document";
+import Coffee from "./pages/Coffee";
+import Cake from "./pages/Cake";
+import Drinks from "./pages/Drinks";
+import Pizza from "./pages/Pizza";
+// import Document from "./pages/Document";
 import { Route, Routes, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
@@ -35,11 +35,11 @@ function App() {
       <Pages>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/calender" element={<Calender />} />
+            <Route exact path="/" element={<Coffee />} />
+            <Route path="/cake" element={<Cake />} />
+            <Route path="/drinks" element={<Drinks />} />
             {/* <Route path="/document" element={<Document />} /> */}
-            <Route path="/projects" element={<Projects />} />
+            <Route path="/soon" element={<Pizza />} />
           </Routes>
         </AnimatePresence>
       </Pages>

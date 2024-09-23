@@ -1,7 +1,7 @@
 import React from "react";
 import MotionHoc from "./MotionHoc";
 import "../styles/rows.css";
-const HomeComponent = () => {
+const CoffeeComponent = () => {
   return (
     <>
       <h1>COFFE</h1>
@@ -29,6 +29,6 @@ const HomeComponent = () => {
   );
 };
 
-const Home = MotionHoc(HomeComponent);
+const Coffee = MotionHoc(CoffeeComponent);
 
-export default Home;
+export default Coffee;

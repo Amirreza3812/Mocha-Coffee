@@ -1,7 +1,7 @@
 import React from "react";
 import MotionHoc from "./MotionHoc";
 import "../styles/rows.css";
-const TeamComponent = () => {
+const CakeComponent = () => {
   return (
     <>
       <h1>CAKE</h1>
@@ -29,6 +29,6 @@ const TeamComponent = () => {
   );
 };
 
-const Team = MotionHoc(TeamComponent);
+const Cake = MotionHoc(CakeComponent);
 
-export default Team;
+export default Cake;

@@ -1,6 +1,7 @@
+import "./sidebar.css";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 // all svg files
 import logo from "../assests/logo.svg";
@@ -9,7 +10,8 @@ import Team from "../assests/social.svg";
 import Calender from "../assests/sceduled.svg";
 import Projects from "../assests/starred.svg";
 import Documents from "../assests/draft.svg";
-import PowerOff from "../assests/power-off-solid.svg";
+// import PowerOff from "../assests/power-off-solid.svg";
+import Coffeback from "../assests/CoffeBack/coffe-2.jpeg"
 
 const Container = styled.div`
   position: fixed;
@@ -98,7 +100,7 @@ const SlickBar = styled.ul`
   padding: 2rem 0;
 `;
 
-const Item = styled.li`
+const Item = styled(NavLink)`
   text-decoration: none;
   width: 100%;
   padding: 1rem 0;
@@ -128,82 +130,83 @@ const Text = styled.span`
   overflow: hidden;
   margin-left: ${(props) => (props.clicked ? "1.5rem" : "0")};
   transition: all 300ms ease;
+  color: rgba(255,255,255,0.7);
 `;
 
-const Profile = styled.div`
-  width: ${(props) => (props.clicked ? "14rem" : "3rem")};
-  height: 3rem;
-  padding: 0.5rem 1rem;
-  // border: 2px solid var(--white);
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: ${(props) => (props.clicked ? "9rem" : "0")};
-  background: var(--black);
-  color: var(--white);
-  transition: all 300ms ease;
+// const Profile = styled.div`
+//   width: ${(props) => (props.clicked ? "14rem" : "3rem")};
+//   height: 3rem;
+//   padding: 0.5rem 1rem;
+//   // border: 2px solid var(--white);
+//   border-radius: 30px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin-left: ${(props) => (props.clicked ? "9rem" : "0")};
+//   background: var(--black);
+//   color: var(--white);
+//   transition: all 300ms ease;
 
-  img {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-    &:hover {
-      border: 2px solid var(--white);
-      padding: 2px;
-    }
-  }
-`;
+//   img {
+//     width: 2.5rem;
+//     height: 2.5rem;
+//     border-radius: 50%;
+//     cursor: pointer;
+//     &:hover {
+//       border: 2px solid var(--white);
+//       padding: 2px;
+//     }
+//   }
+// `;
 
-const Details = styled.div`
-  display: ${(props) => (props.clicked ? "flex" : "none")};
-  justify-contant: space-between;
-  align-items: center;
-`;
+// const Details = styled.div`
+//   display: ${(props) => (props.clicked ? "flex" : "none")};
+//   justify-contant: space-between;
+//   align-items: center;
+// `;
 
-const Name = styled.div`
-  padding: 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+// const Name = styled.div`
+//   padding: 0 1.5rem;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
 
-  h4 {
-    display: inline-block;
-    font-size: 0.8rem;
-  }
+//   h4 {
+//     display: inline-block;
+//     font-size: 0.8rem;
+//   }
 
-  a {
-    font-size: 0.6rem;
-    text-decoration: none;
-    color: var(--grey);
-  }
+//   a {
+//     font-size: 0.6rem;
+//     text-decoration: none;
+//     color: var(--grey);
+//   }
 
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// `;
 
-const Logout = styled.button`
-  border: none;
-  width: 2rem;
-  heigth: 2rem;
-  background-color: transparent;
+// const Logout = styled.button`
+//   border: none;
+//   width: 2rem;
+//   heigth: 2rem;
+//   background-color: transparent;
 
-  img {
-    width: 100%;
-    height: auto;
-    filter: invert(15%) sepia(70%) saturate(6573%) hue-rotate(2deg)
-      brightness(100%) contrast(126%);
+//   img {
+//     width: 100%;
+//     height: auto;
+//     filter: invert(15%) sepia(70%) saturate(6573%) hue-rotate(2deg)
+//       brightness(100%) contrast(126%);
 
-    &:hover {
-      border: none;
-      padding: 0;
-      opacity: 0.5;
-    }
-  }
-`;
+//     &:hover {
+//       border: none;
+//       padding: 0;
+//       opacity: 0.5;
+//     }
+//   }
+// `;
 
 const Sidebar = () => {
   const [click, setClick] = useState(false);
@@ -213,38 +216,39 @@ const Sidebar = () => {
   const handelProfileClick = () => setProfileClick(!profileClick);
 
   return (
+    <>
+      <img src={Coffeback} alt="Coffe-img" className="Back-head-img"/>
     <Container>
       <Button clicked={click} onClick={() => handelClick()}>
         Click
       </Button>
-      <SidebarContainer>
+      <SidebarContainer className="container">
         <Logo>
           <img src={logo} alt="logo" />
         </Logo>
         <SlickBar clicked={click}>
-          <Item onClick={() => setClick(false)}>
-            <NavLink to="/">Home</NavLink>
+          <Item onClick={() => setClick(false)} exact to="/">
             <img src={Home} alt="Home" />
             <Text clicked={click}>Home</Text>
           </Item>
-          <Item onClick={() => setClick(false)}>
+          <Item onClick={() => setClick(false)} to="/team">
             <img src={Team} alt="Team" />
             <Text clicked={click}>Team</Text>
           </Item>
-          <Item onClick={() => setClick(false)}>
+          <Item onClick={() => setClick(false)} to="/calender">
             <img src={Calender} alt="calender" />
             <Text clicked={click}>Calender</Text>
           </Item>
-          <Item onClick={() => setClick(false)}>
+          <Item onClick={() => setClick(false)} to="/projects">
             <img src={Projects} alt="Projects" />
             <Text clicked={click}>Projects</Text>
           </Item>
-          <Item onClick={() => setClick(false)}>
+          {/* <Item onClick={() => setClick(false)} to="/document">
             <img src={Documents} alt="Documents" />
             <Text clicked={click}>Documents</Text>
-          </Item>
+          </Item> */}
         </SlickBar>
-
+{/* 
         <Profile clicked={profileClick}>
           <img
             onClick={() => handelProfileClick()}
@@ -261,9 +265,10 @@ const Sidebar = () => {
               <img src={PowerOff} alt="logout" />
             </Logout>
           </Details>
-        </Profile>
+        </Profile> */}
       </SidebarContainer>
     </Container>
+    </>
   );
 };
 

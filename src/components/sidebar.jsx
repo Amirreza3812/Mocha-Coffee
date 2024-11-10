@@ -10,6 +10,7 @@ import Coffe from "../assests/Coffe.svg";
 import Cake from "../assests/Cake.svg";
 import Drinks from "../assests/Drink.svg";
 import Pizza from "../assests/Pizza.svg";
+import { useCategory } from "../pages/CategoryContext";
 
 const Container = styled.div`
   position: fixed;
@@ -132,6 +133,7 @@ const Text = styled.span`
 `;
 
 const Sidebar = () => {
+  const { selectCategory } = useCategory();
   const [click, setClick] = useState(false);
   const handelClick = () => setClick(!click);
 
@@ -199,6 +201,10 @@ const Sidebar = () => {
     }
   };
 
+  const handleItemClick = (categoryId) => {
+    selectCategory(categoryId); // Set the selected category ID
+  };
+
   return (
     <>
       <img src={Coffeback} alt="Coffe-img" className="Back-head-img" />
@@ -213,7 +219,14 @@ const Sidebar = () => {
           <SlickBar clicked={click}>
             {data.map((item, key) => {
               return (
-                <Item onClick={() => setClick(false)} to={getLink(key)} key={item._id}>
+                <Item
+                  onClick={() => {
+                    setClick(false);
+                    handleItemClick(item._id);
+                  }}
+                  to={getLink(key)}
+                  key={item._id}
+                >
                   <img src={getIcon(key)} alt={item.name} />
                   <Text clicked={click}>{item.name}</Text>
                 </Item>

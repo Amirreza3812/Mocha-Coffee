@@ -1,9 +1,11 @@
 import React from "react";
 import MotionHoc from "./MotionHoc";
 import "../styles/rows.css";
-
+import { useCategory } from "./CategoryContext";
 
 const DrinksComponent = () => {
+  const { selectedCategoryId } = useCategory();
+  console.log(selectedCategoryId);
   return (
     <>
       

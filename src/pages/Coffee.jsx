@@ -1,9 +1,12 @@
 import React from "react";
 import MotionHoc from "./MotionHoc";
 import "../styles/rows.css";
-
+import { useCategory } from "./CategoryContext";
 
 const CoffeeComponent = () => {
+  const { selectedCategoryId } = useCategory();
+  console.log(selectedCategoryId);
+
   return (
     <>
       {/* Thay will get from api */}

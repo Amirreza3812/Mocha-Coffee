@@ -9,6 +9,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
 import CoffeeComponent from "./pages/Coffee";
+import { CategoryProvider } from "./pages/CategoryContext";
+
 
 const Pages = styled.div`
   width: 100vw;
@@ -18,33 +20,35 @@ const Pages = styled.div`
   align-items: start;
   direction: rtl;
   h1 {
-    margin-right:4vh;
-    text-align:center;
+    margin-right: 4vh;
+    text-align: center;
     font-size: calc(2rem + 2vw);
     background: linear-gradient(to right, #803bec 30%, #1b1b1b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-top:33vh;
+    margin-top: 33vh;
   }
 `;
 
 function App() {
   const location = useLocation();
   return (
-    <>
-      <Sidebar />
-      <Pages>
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<CoffeeComponent />} />
-            <Route path="/cake" element={<Cake />} />
-            <Route path="/drinks" element={<Drinks />} />
-            {/* <Route path="/document" element={<Document />} /> */}
-            <Route path="/soon" element={<Pizza />} />
-          </Routes>
-        </AnimatePresence>
-      </Pages>
-    </>
+    <CategoryProvider>
+      <>
+        <Sidebar />
+        <Pages>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<CoffeeComponent />} />
+              <Route path="/cake" element={<Cake />} />
+              <Route path="/drinks" element={<Drinks />} />
+              {/* <Route path="/document" element={<Document />} /> */}
+              <Route path="/soon" element={<Pizza />} />
+            </Routes>
+          </AnimatePresence>
+        </Pages>
+      </>
+    </CategoryProvider>
   );
 }
 

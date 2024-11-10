@@ -10,7 +10,7 @@ import Coffe from "../assests/Coffe.svg";
 import Cake from "../assests/Cake.svg";
 import Drinks from "../assests/Drink.svg";
 import Pizza from "../assests/Pizza.svg";
-import Data from "../data";
+import Data from "../Data";
 // import Documents from "../assests/draft.svg";
 // import PowerOff from "../assests/power-off-solid.svg";
 // import Coffeback from "../assests/CoffeBack/coffe-2.jpeg";

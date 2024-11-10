@@ -60,13 +60,9 @@ const PizzaComponent = () => {
           })}
         </div>
         <div className="price-product">
-          <p className="price-rows">30</p>
-          <p className="price-rows">60</p>
-          <p className="price-rows">90</p>
-          <p className="price-rows">95</p>
-          <p className="price-rows">95</p>
-          <p className="price-rows">95</p>
-          <p className="price-rows">70</p>
+        {filteredProducts.map((item)=>{
+            return <p className="price-rows">{item.price}</p>
+          })}
         </div>
       </div>
     </>

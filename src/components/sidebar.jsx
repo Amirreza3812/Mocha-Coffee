@@ -1,19 +1,15 @@
 import "./sidebar.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Coffeback from "../assests/CoffeBack/coffe-2.jpeg";
-// all svg files
 
+// SVG imports for icons
 import logo from "../assests/logo.svg";
 import Coffe from "../assests/Coffe.svg";
 import Cake from "../assests/Cake.svg";
 import Drinks from "../assests/Drink.svg";
 import Pizza from "../assests/Pizza.svg";
-import Data from "../Data";
-// import Documents from "../assests/draft.svg";
-// import PowerOff from "../assests/power-off-solid.svg";
-// import Coffeback from "../assests/CoffeBack/coffe-2.jpeg";
 
 const Container = styled.div`
   position: fixed;
@@ -72,7 +68,7 @@ const SidebarContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  z-index=200;
+  z-index: 200;
 `;
 
 const Logo = styled.div`
@@ -134,89 +130,74 @@ const Text = styled.span`
   transition: all 800ms ease-in-out;
   color: rgba(255, 255, 255, 0.7);
 `;
-``;
-
-// const Profile = styled.div`
-//   width: ${(props) => (props.clicked ? "14rem" : "3rem")};
-//   height: 3rem;
-//   padding: 0.5rem 1rem;
-//   // border: 2px solid var(--white);
-//   border-radius: 30px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-left: ${(props) => (props.clicked ? "9rem" : "0")};
-//   background: var(--black);
-//   color: var(--white);
-//   transition: all 300ms ease;
-
-//   img {
-//     width: 2.5rem;
-//     height: 2.5rem;
-//     border-radius: 50%;
-//     cursor: pointer;
-//     &:hover {
-//       border: 2px solid var(--white);
-//       padding: 2px;
-//     }
-//   }
-// `;
-
-// const Details = styled.div`
-//   display: ${(props) => (props.clicked ? "flex" : "none")};
-//   justify-contant: space-between;
-//   align-items: center;
-// `;
-
-// const Name = styled.div`
-//   padding: 0 1.5rem;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-
-//   h4 {
-//     display: inline-block;
-//     font-size: 0.8rem;
-//   }
-
-//   a {
-//     font-size: 0.6rem;
-//     text-decoration: none;
-//     color: var(--grey);
-//   }
-
-//   &:hover {
-//     text-decoration: underline;
-//   }
-// `;
-
-// const Logout = styled.button`
-//   border: none;
-//   width: 2rem;
-//   heigth: 2rem;
-//   background-color: transparent;
-
-//   img {
-//     width: 100%;
-//     height: auto;
-//     filter: invert(15%) sepia(70%) saturate(6573%) hue-rotate(2deg)
-//       brightness(100%) contrast(126%);
-
-//     &:hover {
-//       border: none;
-//       padding: 0;
-//       opacity: 0.5;
-//     }
-//   }
-// `;
 
 const Sidebar = () => {
   const [click, setClick] = useState(false);
   const handelClick = () => setClick(!click);
 
-  const [profileClick, setProfileClick] = useState(false);
-  const handelProfileClick = () => setProfileClick(!profileClick);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://getsu.liara.run/api/categories");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const result = await response.json();
+        setData(result); // Set the data from the API response
+        setLoading(false); // Data is loaded, so set loading to false
+      } catch (error) {
+        setError("Failed to fetch data");
+        setLoading(false); // Even if there's an error, stop the loading state
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array means this effect runs only once when the component mounts
+
+  // Render loading, error, or the actual content
+  if (loading) {
+    return <p>Loading data...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  // Define a helper function to get the right icon based on the key
+  const getIcon = (key) => {
+    switch (key) {
+      case 0:
+        return Coffe;
+      case 1:
+        return Cake;
+      case 2:
+        return Drinks;
+      case 3:
+        return Pizza;
+      default:
+        return Coffe; // Default icon
+    }
+  };
+
+  // Define a helper function to get the right link based on the key
+  const getLink = (key) => {
+    switch (key) {
+      case 0:
+        return "/";
+      case 1:
+        return "/cake";
+      case 2:
+        return "/drinks";
+      case 3:
+        return "/soon";
+      default:
+        return "/"; // Default link
+    }
+  };
 
   return (
     <>
@@ -230,48 +211,17 @@ const Sidebar = () => {
             <img src={logo} alt="logo" />
           </Logo>
           <SlickBar clicked={click}>
-            <Item onClick={() => setClick(false)} to="/">
-              <img src={Coffe} alt="COFEE" /> {/* Thay will get from api */}
-              <Text clicked={click}>COFFE</Text> {/* Thay will get from api */}
-            </Item>
-            <Item onClick={() => setClick(false)} to="/cake">
-              <img src={Cake} alt="cake" />
-              <Text clicked={click}>CAKE</Text>
-            </Item>
-            <Item onClick={() => setClick(false)} to="/drinks">
-              <img src={Drinks} alt="drinks" />
-              <Text clicked={click}>DRINKS</Text>
-            </Item>
-            <Item onClick={() => setClick(false)} to="/soon">
-              <img src={Pizza} alt="soon" />
-              <Text clicked={click}>SOON</Text>
-            </Item>
-            {/* <Item onClick={() => setClick(false)} to="/document">
-            <img src={Documents} alt="Documents" />
-            <Text clicked={click}>Documents</Text>
-          </Item> */}
+            {data.map((item, key) => {
+              return (
+                <Item onClick={() => setClick(false)} to={getLink(key)} key={item._id}>
+                  <img src={getIcon(key)} alt={item.name} />
+                  <Text clicked={click}>{item.name}</Text>
+                </Item>
+              );
+            })}
           </SlickBar>
-          {/* 
-        <Profile clicked={profileClick}>
-          <img
-            onClick={() => handelProfileClick()}
-            src="https:/picsum.photos/200"
-            alt="Profile Image"
-          />
-          <Details clicked={profileClick}>
-            <Name>
-              <h4>Jhon Doe</h4>
-              <a href="#">view profile</a>
-            </Name>
-
-            <Logout>
-              <img src={PowerOff} alt="logout" />
-            </Logout>
-          </Details>
-        </Profile> */}
         </SidebarContainer>
       </Container>
-      <Data />
     </>
   );
 };

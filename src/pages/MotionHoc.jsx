@@ -8,13 +8,13 @@ const MotionHoc = (Component) => {
   return function Hoc() {
     return (
       <motion.div
-        initial={{ y: 500 }}
+        initial={{ y: 350 }}
         animate={{
           y: 0,
-          transition: { duration: 0.5, type: "spring" },
+          transition: { duration: 0.3, type: "spring" },
         }}
         exit={{
-          y: -500,
+          y: -250,
           transition: { duration: 0.3, type: "spring", ease: "easeInOut" },
         }}
       >

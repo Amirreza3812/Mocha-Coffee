@@ -8,6 +8,7 @@ import Pizza from "./pages/Pizza";
 import { Route, Routes, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
+import CoffeeComponent from "./pages/Coffee";
 
 const Pages = styled.div`
   width: 100vw;
@@ -35,7 +36,7 @@ function App() {
       <Pages>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            <Route exact path="/" element={<Coffee />} />
+            <Route path="/" element={<CoffeeComponent />} />
             <Route path="/cake" element={<Cake />} />
             <Route path="/drinks" element={<Drinks />} />
             {/* <Route path="/document" element={<Document />} /> */}

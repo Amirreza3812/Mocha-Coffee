@@ -2,16 +2,18 @@ import "./sidebar.css";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
-
+import Coffeback from "../assests/CoffeBack/coffe-2.jpeg";
 // all svg files
+
 import logo from "../assests/logo.svg";
 import Coffe from "../assests/Coffe.svg";
 import Cake from "../assests/Cake.svg";
 import Drinks from "../assests/Drink.svg";
 import Pizza from "../assests/Pizza.svg";
+import Data from "../data";
 // import Documents from "../assests/draft.svg";
 // import PowerOff from "../assests/power-off-solid.svg";
-import Coffeback from "../assests/CoffeBack/coffe-2.jpeg"
+// import Coffeback from "../assests/CoffeBack/coffe-2.jpeg";
 
 const Container = styled.div`
   position: fixed;
@@ -70,6 +72,7 @@ const SidebarContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
+  z-index=200;
 `;
 
 const Logo = styled.div`
@@ -94,7 +97,7 @@ const SlickBar = styled.ul`
   z-index: 10;
   left: 0;
   width: ${(props) => (props.clicked ? "12rem" : "3.5rem")};
-  transition: all 0.5s ease;
+  transition: all 0.8s ease;
   border-radius: 0 30px 30px 0;
   padding: 2rem 0;
 `;
@@ -128,9 +131,10 @@ const Text = styled.span`
   width: ${(props) => (props.clicked ? "100%" : "0")};
   overflow: hidden;
   margin-left: ${(props) => (props.clicked ? "1.5rem" : "0")};
-  transition: all 300ms ease;
-  color: rgba(255,255,255,0.7);
+  transition: all 800ms ease-in-out;
+  color: rgba(255, 255, 255, 0.7);
 `;
+``;
 
 // const Profile = styled.div`
 //   width: ${(props) => (props.clicked ? "14rem" : "3rem")};
@@ -216,39 +220,38 @@ const Sidebar = () => {
 
   return (
     <>
-      <img src={Coffeback} alt="Coffe-img" className="Back-head-img"/>
-    <Container>
-     
-      <SidebarContainer className="container">
-      <Button clicked={click} onClick={() => handelClick()}>
-        Click
-      </Button>
-        <Logo>
-          <img src={logo} alt="logo" />
-        </Logo>
-        <SlickBar clicked={click}>
-          <Item onClick={() => setClick(false)} exact to="/">
-            <img src={Coffe} alt="COFEE" />
-            <Text clicked={click}>COFFE</Text>
-          </Item>
-          <Item onClick={() => setClick(false)} to="/cake">
-            <img src={Cake} alt="cake" />
-            <Text clicked={click}>CAKE</Text>
-          </Item>
-          <Item onClick={() => setClick(false)} to="/drinks">
-            <img src={Drinks} alt="drinks" />
-            <Text clicked={click}>DRINKS</Text>
-          </Item>
-          <Item onClick={() => setClick(false)} to="/soon">
-            <img src={Pizza} alt="soon" />
-            <Text clicked={click}>SOON</Text>
-          </Item>
-          {/* <Item onClick={() => setClick(false)} to="/document">
+      <img src={Coffeback} alt="Coffe-img" className="Back-head-img" />
+      <Container>
+        <SidebarContainer className="container">
+          <Button clicked={click} onClick={() => handelClick()}>
+            Click
+          </Button>
+          <Logo>
+            <img src={logo} alt="logo" />
+          </Logo>
+          <SlickBar clicked={click}>
+            <Item onClick={() => setClick(false)} to="/">
+              <img src={Coffe} alt="COFEE" /> {/* Thay will get from api */}
+              <Text clicked={click}>COFFE</Text> {/* Thay will get from api */}
+            </Item>
+            <Item onClick={() => setClick(false)} to="/cake">
+              <img src={Cake} alt="cake" />
+              <Text clicked={click}>CAKE</Text>
+            </Item>
+            <Item onClick={() => setClick(false)} to="/drinks">
+              <img src={Drinks} alt="drinks" />
+              <Text clicked={click}>DRINKS</Text>
+            </Item>
+            <Item onClick={() => setClick(false)} to="/soon">
+              <img src={Pizza} alt="soon" />
+              <Text clicked={click}>SOON</Text>
+            </Item>
+            {/* <Item onClick={() => setClick(false)} to="/document">
             <img src={Documents} alt="Documents" />
             <Text clicked={click}>Documents</Text>
           </Item> */}
-        </SlickBar>
-{/* 
+          </SlickBar>
+          {/* 
         <Profile clicked={profileClick}>
           <img
             onClick={() => handelProfileClick()}
@@ -266,8 +269,9 @@ const Sidebar = () => {
             </Logout>
           </Details>
         </Profile> */}
-      </SidebarContainer>
-    </Container>
+        </SidebarContainer>
+      </Container>
+      <Data />
     </>
   );
 };

@@ -1,9 +1,13 @@
 import React from "react";
 import MotionHoc from "./MotionHoc";
 import "../styles/rows.css";
+
+
 const DrinksComponent = () => {
   return (
     <>
+      
+      {/* Thay will get from api */}
       <h1>DRINKS</h1>
       <div className="container-rows">
         <div className="name-product">

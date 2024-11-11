@@ -11,15 +11,17 @@
 .rows {
   margin-right: 8vw;
   position: relative;
+  margin-left: 2rem;
 }
 
 .rows::after {
   content: "";
   position: absolute;
-  width: 220%;
+  width: 180%;
   height: 2px;
   bottom: 50%;
-  left: -250%;
+  left: -12rem;
+  margin: 0px 1rem;
   background-color: var(--black);
   border-radius: 10px;
   opacity: 0.3;

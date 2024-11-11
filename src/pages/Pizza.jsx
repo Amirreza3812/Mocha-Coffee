@@ -5,7 +5,7 @@ import { useCategory } from "./CategoryContext";
 
 const PizzaComponent = () => {
   const { selectedCategoryId } = useCategory();
-  console.log(selectedCategoryId);
+  // console.log(selectedCategoryId);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -21,10 +21,8 @@ const PizzaComponent = () => {
           }
           const products = await response.json();
           setProducts(products);
-          console.log(products);
         } catch (error) {
           console.error("Error fetching products:", error);
-          console.log(products);
         }
       };
 
@@ -42,7 +40,6 @@ const PizzaComponent = () => {
       // If the category is found, get its products
       if (selectedCategory && selectedCategory.products) {
         setFilteredProducts(selectedCategory.products);
-        console.log("Filtered Products:", selectedCategory.products);
       } else {
         setFilteredProducts([]); // No products found for the selected category
       }
@@ -51,17 +48,16 @@ const PizzaComponent = () => {
 
   return (
     <>
-      {/* Thay will get from api */}
-      <h1 className="comming-soon">COMMING SOON</h1>
+      <h1 className="comming-soon">{products[3]?.name || "Loading..."}</h1>
       <div className="container-rows">
         <div className="name-product">
-          {filteredProducts.map((item)=>{
-            return <p className="rows">{item.name}</p>
+          {filteredProducts.map((item) => {
+            return <p className="rows">{item.name}</p>;
           })}
         </div>
         <div className="price-product">
-        {filteredProducts.map((item)=>{
-            return <p className="price-rows">{item.price}</p>
+          {filteredProducts.map((item) => {
+            return <p className="price-rows">{item.price}</p>;
           })}
         </div>
       </div>

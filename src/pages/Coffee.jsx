@@ -5,7 +5,7 @@ import { useCategory } from "./CategoryContext";
 
 const CoffeeComponent = () => {
   const { selectedCategoryId } = useCategory();
-  console.log(selectedCategoryId);
+  // console.log(selectedCategoryId);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -21,10 +21,8 @@ const CoffeeComponent = () => {
           }
           const products = await response.json();
           setProducts(products);
-          console.log(products);
         } catch (error) {
           console.error("Error fetching products:", error);
-          console.log(products);
         }
       };
 
@@ -38,32 +36,23 @@ const CoffeeComponent = () => {
         (product) => product.categoryId === selectedCategoryId
       );
       setFilteredProducts(filtered);
-      console.log("Filtered Products:", filtered);
     }
   }, [products, selectedCategoryId]);
 
   return (
     <>
       {/* Thay will get from api */}
-      <h1>COFFE</h1>
+      <h1>{products[0]?.name || "Loading..."}</h1>
       <div className="container-rows">
         <div className="name-product">
-          <p className="rows">اسپرسو تک</p>
-          <p className="rows">اسپرسو تک</p>
-          <p className="rows">اسپرسو تک</p>
-          <p className="rows">اسپرسو تک</p>
-          <p className="rows">اسپرسو تک</p>
-          <p className="rows">اسپرسو تک</p>
-          <p className="rows">اسپرسو تک</p>
+          {filteredProducts.map((item) => {
+            return <p className="rows">{item.name}</p>;
+          })}
         </div>
         <div className="price-product">
-          <p className="price-rows">30</p>
-          <p className="price-rows">60</p>
-          <p className="price-rows">90</p>
-          <p className="price-rows">95</p>
-          <p className="price-rows">95</p>
-          <p className="price-rows">95</p>
-          <p className="price-rows">70</p>
+          {filteredProducts.map((item) => {
+            return <p className="price-rows">{item.price}</p>;
+          })}
         </div>
       </div>
     </>

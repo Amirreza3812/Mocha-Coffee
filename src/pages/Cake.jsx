@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import MotionHoc from "./MotionHoc";
 import "../styles/rows.css";
 import { useCategory } from "./CategoryContext";
+import CoffeeBack from "../assests/CoffeBack/coffe-2.jpeg";
+import BackDeser from "../assests/CoffeBack/dessrt-1.jpg";
 const CakeComponent = () => {
   const { selectedCategoryId } = useCategory();
   // console.log(selectedCategoryId);
 
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (selectedCategoryId) {
       const fetchProducts = async () => {
+        setLoading(true);
         try {
           const response = await fetch(
             `https://getsu.liara.run/api/categories`
@@ -23,6 +26,8 @@ const CakeComponent = () => {
           setProducts(products);
         } catch (error) {
           console.error("Error fetching products:", error);
+        } finally {
+          setLoading(false);
         }
       };
 
@@ -48,9 +53,8 @@ const CakeComponent = () => {
 
   return (
     <>
-      {/* Thay will get from api */}
-      <h1>{products[2]?.name || "Loading..."}</h1>{" "}
-      {/* Thay will get from api */}
+      <img src={BackDeser} alt="" className="Back-img" />
+      <h1>{loading ? "Loading..." : products[2]?.name}</h1>{" "}
       <div className="container-rows">
         <div className="name-product">
           {filteredProducts.map((item) => {

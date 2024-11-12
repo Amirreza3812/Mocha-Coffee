@@ -1,17 +1,27 @@
+@font-face {
+  font-family: "Yekan";
+  src: local("Yekan"), url("./Fonts/Yekan.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "IRANSans";
+  src: local("IRANSans"), url("./Fonts/IRANSans.ttf") format("truetype");
+  font-weight: 600;
+}
 
 :root {
   /* colors */
-  --black:#09090c;
-  --grey:#a4b2bc;
-  --white:#fff;
-  --background:rgba(137,171,245,0.37)
+  --black: #09090c;
+  --grey: #a4b2bc;
+  --white: #fff;
+  --background: rgba(137, 171, 245, 0.37);
 }
 
 html {
   overflow: hidden;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,7 +31,14 @@ body {
   margin: 0;
   /* display: flex; */
   /* place-items: center; */
-  
+  direction: rtl;
 }
 
+.font-Yekan {
+  font-family: "Yekan";
+  /* font-weight: bold; */
+}
 
+.font-Sans {
+  font-family: "IRANSans";
+}

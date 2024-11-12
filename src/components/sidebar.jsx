@@ -2,7 +2,6 @@ import "./sidebar.css";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import Coffeback from "../assests/CoffeBack/coffe-2.jpeg";
 
 // SVG imports for icons
 import logo from "../assests/logo.svg";
@@ -14,7 +13,7 @@ import { useCategory } from "../pages/CategoryContext";
 
 const Container = styled.div`
   position: fixed;
-
+  z-index: 200;
   .active {
     border-right: 4px solid var(--white);
 
@@ -62,7 +61,7 @@ const SidebarContainer = styled.div`
   width: 3.5rem;
   height: 80vh;
   margin-top: 1rem;
-  border-radius: 0 30px 30px 0;
+  border-radius: 30px 0px 0px 30px;
   padding: 1rem 0;
   display: flex;
   flex-direction: column;
@@ -95,8 +94,9 @@ const SlickBar = styled.ul`
   left: 0;
   width: ${(props) => (props.clicked ? "12rem" : "3.5rem")};
   transition: all 0.8s ease;
-  border-radius: 0 30px 30px 0;
+  border-radius: 30px 0px 0px 30px;
   padding: 2rem 0;
+  right: 0;
 `;
 
 const Item = styled(NavLink)`
@@ -105,10 +105,10 @@ const Item = styled(NavLink)`
   padding: 1rem 0;
   cursor: pointer;
   display: flex;
-  padding-left: 1rem;
+  padding-right: 1rem;
 
   &:hover {
-    border-right: 4px solid var(--white);
+    border-left: 4px solid var(--white);
 
     img {
       filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
@@ -127,7 +127,7 @@ const Item = styled(NavLink)`
 const Text = styled.span`
   width: ${(props) => (props.clicked ? "100%" : "0")};
   overflow: hidden;
-  margin-left: ${(props) => (props.clicked ? "1.5rem" : "0")};
+  margin-right: ${(props) => (props.clicked ? "1.5rem" : "0")};
   transition: all 800ms ease-in-out;
   color: rgba(255, 255, 255, 0.7);
 `;
@@ -207,7 +207,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <img src={Coffeback} alt="Coffe-img" className="Back-head-img" />
+      {/* <img src={Coffeback} alt="Coffe-img" className="Back-head-img" /> */}
       <Container>
         <SidebarContainer className="container">
           <Button clicked={click} onClick={() => handelClick()}>
@@ -228,7 +228,9 @@ const Sidebar = () => {
                   key={item._id}
                 >
                   <img src={getIcon(key)} alt={item.name} />
-                  <Text clicked={click}>{item.name}</Text>
+                  <Text clicked={click} className="font-Yekan">
+                    {item.name}
+                  </Text>
                 </Item>
               );
             })}

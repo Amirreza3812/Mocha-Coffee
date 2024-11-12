@@ -11,12 +11,11 @@ import { AnimatePresence } from "framer-motion";
 import CoffeeComponent from "./pages/Coffee";
 import { CategoryProvider } from "./pages/CategoryContext";
 
-
 const Pages = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: start;
   direction: rtl;
   h1 {
@@ -26,7 +25,7 @@ const Pages = styled.div`
     background: linear-gradient(to right, #803bec 30%, #1b1b1b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-top: 33vh;
+    margin-top: 2vh;
   }
 `;
 

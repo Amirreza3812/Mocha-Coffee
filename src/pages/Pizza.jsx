@@ -54,7 +54,7 @@ const PizzaComponent = () => {
   return (
     <>
       <img src={BackDeser} alt="" className="Back-img" />
-      <h1 className="comming-soon" className="Yekan">
+      <h1 className="comming-soon Yekan">
         {loading ? "Loading..." : products[3]?.name}
       </h1>
       <div className="container-rows">

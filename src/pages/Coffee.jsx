@@ -16,24 +16,31 @@ const CoffeeComponent = () => {
   // Slideshow state
   const images = [CoffeeBack1, CoffeeBack2, CoffeeBack3];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [animationClass, setAnimationClass] = useState(""); // To manage animation class
 
   // Change image automatically every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      handleNext(); // Automatically move to the next image
     }, 5000);
 
     return () => clearInterval(interval); // Cleanup
-  }, [images.length]);
+  }, []);
 
   const handleNext = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setAnimationClass("slide-in"); // Apply animation class
+    setTimeout(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 0); // Trigger animation
   };
 
   const handlePrev = () => {
-    setCurrentImageIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+    setAnimationClass("slide-out"); // Apply reverse animation class
+    setTimeout(() => {
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      );
+    }, 0); // Trigger animation
   };
 
   useEffect(() => {
@@ -69,10 +76,21 @@ const CoffeeComponent = () => {
     }
   }, [products, selectedCategoryId]);
 
+  // Reset animation class after each transition
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationClass(""); // Remove the animation class after the animation ends
+    }, 1000); // Duration of the CSS animation (must match your CSS)
+
+    return () => clearTimeout(timer); // Cleanup timer
+  }, [currentImageIndex]);
+
   return (
     <>
       <div className="slideshow-container">
-        <img src={images[currentImageIndex]} alt="" className="Back-img" />
+        <div className={`slideshow-images ${animationClass}`}>
+          <img src={images[currentImageIndex]} alt="" className="Back-img" />
+        </div>
         <button className="prev-button" onClick={handlePrev}>
           &#10094;
         </button>

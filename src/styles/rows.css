@@ -63,15 +63,15 @@
   position: relative;
   width: 100%;
   display: flex;
-  transition: transform 1s ease-in-out;
+  transition: transform 1.5s ease-in-out;
 }
 
 .slide-in {
-  animation: slideIn 1s forwards;
+  animation: slideIn 1.5s forwards;
 }
 
 .slide-out {
-  animation: slideOut 1s forwards;
+  animation: slideOut 1.5s forwards;
 }
 
 @keyframes slideIn {

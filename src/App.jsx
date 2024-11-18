@@ -10,6 +10,7 @@ import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
 import CoffeeComponent from "./pages/Coffee";
 import { CategoryProvider } from "./pages/CategoryContext";
+import Feedback from "./pages/Feedback";
 
 const Pages = styled.div`
   width: 100vw;
@@ -38,7 +39,8 @@ function App() {
         <Pages>
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<CoffeeComponent />} />
+              <Route path="/" element={<Feedback />} />
+              <Route path="/coffee" element={<CoffeeComponent />} />
               <Route path="/cake" element={<Cake />} />
               <Route path="/drinks" element={<Drinks />} />
               {/* <Route path="/document" element={<Document />} /> */}

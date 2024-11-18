@@ -166,7 +166,7 @@ const Sidebar = () => {
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return console.log(error);
   }
 
   // Define a helper function to get the right icon based on the key
@@ -189,7 +189,7 @@ const Sidebar = () => {
   const getLink = (key) => {
     switch (key) {
       case 0:
-        return "/";
+        return "/coffee";
       case 1:
         return "/cake";
       case 2:
@@ -207,7 +207,6 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* <img src={Coffeback} alt="Coffe-img" className="Back-head-img" /> */}
       <Container>
         <SidebarContainer className="container">
           <Button clicked={click} onClick={() => handelClick()}>

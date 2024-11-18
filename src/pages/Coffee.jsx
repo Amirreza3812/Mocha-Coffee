@@ -80,7 +80,7 @@ const CoffeeComponent = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimationClass(""); // Remove the animation class after the animation ends
-    }, 1000); // Duration of the CSS animation (must match your CSS)
+    }, 1500); // Duration of the CSS animation (must match your CSS)
 
     return () => clearTimeout(timer); // Cleanup timer
   }, [currentImageIndex]);
@@ -91,12 +91,12 @@ const CoffeeComponent = () => {
         <div className={`slideshow-images ${animationClass}`}>
           <img src={images[currentImageIndex]} alt="" className="Back-img" />
         </div>
-        <button className="prev-button" onClick={handlePrev}>
+        {/* <button className="prev-button" onClick={handlePrev}>
           &#10094;
         </button>
         <button className="next-button" onClick={handleNext}>
           &#10095;
-        </button>
+        </button> */}
       </div>
 
       <h1>{loading ? "Loading..." : products[0]?.name}</h1>

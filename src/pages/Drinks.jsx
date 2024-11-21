@@ -4,6 +4,7 @@ import "../styles/rows.css";
 import { useCategory } from "./CategoryContext";
 import CoffeeBack from "../assests/CoffeBack/coffe-2.jpeg";
 import BackDeser from "../assests/CoffeBack/desr8.jpg";
+import Sidebar from "../components/sidebar";
 
 const DrinksComponent = () => {
   const { selectedCategoryId } = useCategory();
@@ -18,7 +19,7 @@ const DrinksComponent = () => {
         setLoading(true);
         try {
           const response = await fetch(
-            `https://getsu.liara.run/api/categories`
+            `https://getsuback.liara.run/api/categories`
           );
           if (!response.ok) {
             throw new Error("Failed to fetch products");
@@ -54,8 +55,9 @@ const DrinksComponent = () => {
 
   return (
     <>
+      <Sidebar />
       <img src={BackDeser} alt="" className="Back-img" />
-      <h1>{loading ? "Loading..." : products[1]?.name}</h1>
+      <h1 className="h1">{loading ? "Loading..." : products[2]?.name}</h1>
       <div className="container-rows">
         <div className="name-product">
           {filteredProducts.map((item) => {

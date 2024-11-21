@@ -4,6 +4,7 @@ import "../styles/soon.css";
 import { useCategory } from "./CategoryContext";
 import CoffeeBack from "../assests/CoffeBack/coffe-2.jpeg";
 import BackDeser from "../assests/CoffeBack/Fasst-food.jpg";
+import Sidebar from "../components/sidebar";
 
 const PizzaComponent = () => {
   const { selectedCategoryId } = useCategory();
@@ -17,7 +18,7 @@ const PizzaComponent = () => {
         setLoading(true);
         try {
           const response = await fetch(
-            `https://getsu.liara.run/api/categories`
+            `https://getsuback.liara.run/api/categories`
           );
           if (!response.ok) {
             throw new Error("Failed to fetch products");
@@ -53,6 +54,7 @@ const PizzaComponent = () => {
 
   return (
     <>
+      <Sidebar />
       <img src={BackDeser} alt="" className="Back-img" />
       <h1 className="comming-soon Yekan">
         {loading ? "Loading..." : products[3]?.name}

@@ -30,21 +30,23 @@ const Pages = styled.div`
   }
 `;
 
+const url = "https://getsuback.liara.run";
+
 function App() {
   const location = useLocation();
   return (
     <CategoryProvider>
       <>
-        <Sidebar />
+        {/* <Sidebar /> */}
         <Pages>
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Feedback />} />
-              <Route path="/coffee" element={<CoffeeComponent />} />
-              <Route path="/cake" element={<Cake />} />
-              <Route path="/drinks" element={<Drinks />} />
+              <Route path="/coffee" element={<CoffeeComponent />} url={url} />
+              <Route path="/cake" element={<Cake />} url={url} />
+              <Route path="/drinks" element={<Drinks />} url={url} />
               {/* <Route path="/document" element={<Document />} /> */}
-              <Route path="/soon" element={<Pizza />} />
+              <Route path="/soon" element={<Pizza />} url={url} />
             </Routes>
           </AnimatePresence>
         </Pages>

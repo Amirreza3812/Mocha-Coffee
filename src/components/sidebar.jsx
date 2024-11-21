@@ -132,7 +132,7 @@ const Text = styled.span`
   color: rgba(255, 255, 255, 0.7);
 `;
 
-const Sidebar = () => {
+const Sidebar = ({ url }) => {
   const { selectCategory } = useCategory();
   const [click, setClick] = useState(false);
   const handelClick = () => setClick(!click);
@@ -144,7 +144,9 @@ const Sidebar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://getsu.liara.run/api/categories");
+        const response = await fetch(
+          `https://getsuback.liara.run/api/categories`
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

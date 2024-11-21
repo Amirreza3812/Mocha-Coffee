@@ -5,10 +5,12 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import "./Fonts/Yekan.ttf";
 import "./Fonts/IRANSans.ttf";
+import "./Fonts/IRANSans_Bold.ttf";
+import "./Fonts/IRANSans_Light.ttf";
+import "./Fonts/IRANSans_Medium.ttf";
+
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );

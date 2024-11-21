@@ -1,3 +1,22 @@
+.h1 {
+  background: linear-gradient(to right, #000000 100%, #1b1b1b 0%) !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-family: "Yekan";
+}
+
+@font-face {
+  font-family: "IRANSans";
+  src: local("Fonts"), url("../Fonts/IRANSans.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Yekan";
+  src: local("Fonts"), url("../Fonts/Yekan.ttf") format("truetype");
+  font-weight: 600;
+}
+
 .container-rows {
   display: flex;
   align-items: flex-start;
@@ -12,15 +31,16 @@
   margin-right: 8vw;
   position: relative;
   margin-left: 2rem;
+  font-family: "IRANSans";
 }
 
 .rows::after {
   content: "";
   position: absolute;
-  width: 160%;
+  width: 140%;
   height: 2px;
   bottom: 50%;
-  left: -12rem;
+  left: -13rem;
   margin: 0px 1rem;
   background-color: var(--black);
   border-radius: 10px;
@@ -50,6 +70,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 3vh;
+  font-family: "IRANSans";
 }
 /* hhhhhhh */
 .slideshow-container {

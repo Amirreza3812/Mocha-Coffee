@@ -28,23 +28,35 @@
 }
 
 .rows {
-  margin-right: 8vw;
+  margin-right: 2.4rem;
   position: relative;
-  margin-left: 2rem;
   font-family: "IRANSans";
 }
 
 .rows::after {
   content: "";
   position: absolute;
-  width: 140%;
+  width: 160%;
   height: 2px;
   bottom: 50%;
-  left: -13rem;
-  margin: 0px 1rem;
+  left: -8rem;
+  margin: 0px 0.2rem;
   background-color: var(--black);
   border-radius: 10px;
   opacity: 0.3;
+}
+
+@media only screen and (max-width: 400px) {
+  .rows::after {
+    width: 80%;
+    left: -7rem;
+  }
+  .container-rows {
+    column-gap: 8rem;
+  }
+  .h1 {
+    font-size: 24px !important;
+  }
 }
 
 /* .rows::after {

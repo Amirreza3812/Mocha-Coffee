@@ -1,16 +1,16 @@
 import "./App.css";
-import Sidebar from "./components/sidebar";
-import Coffee from "./pages/Coffee";
 import Cake from "./pages/Cake";
-import Drinks from "./pages/Drinks";
-import Pizza from "./pages/Pizza";
-// import Document from "./pages/Document";
+import Breakfast from "./pages/Breakfast";
 import { Route, Routes, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
 import CoffeeComponent from "./pages/Coffee";
 import { CategoryProvider } from "./pages/CategoryContext";
 import Feedback from "./pages/Feedback";
+import ColdDrinks from "./pages/ColdDrinks";
+import Moktel from "./pages/Moktel";
+import Tea from "./pages/Tea";
+import Pishfood from "./pages/Pishfood";
 
 const Pages = styled.div`
   width: 100vw;
@@ -42,11 +42,13 @@ function App() {
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Feedback />} />
-              <Route path="/coffee" element={<CoffeeComponent />} url={url} />
-              <Route path="/cake" element={<Cake />} url={url} />
-              <Route path="/drinks" element={<Drinks />} url={url} />
-              {/* <Route path="/document" element={<Document />} /> */}
-              <Route path="/soon" element={<Pizza />} url={url} />
+              <Route path="/coffee" element={<CoffeeComponent />} />
+              <Route path="/cold" element={<ColdDrinks />} />
+              <Route path="/moktel" element={<Moktel />} />
+              <Route path="/brackfast" element={<Breakfast />} />
+              <Route path="/tea" element={<Tea />} />
+              <Route path="/dessert" element={<Cake />} />
+              <Route path="/pishfood" element={<Pishfood />} />
             </Routes>
           </AnimatePresence>
         </Pages>

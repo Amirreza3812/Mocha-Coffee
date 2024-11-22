@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import MotionHoc from "./MotionHoc";
 import "../styles/rows.css";
 import { useCategory } from "./CategoryContext";
-import CoffeeBack from "../assests/CoffeBack/coffe-2.jpeg";
-import BackDeser from "../assests/CoffeBack/dessrt-1.jpg";
 import CoffeeBack1 from "../assests/CoffeBack/coffe-1.jpg";
 import CoffeeBack2 from "../assests/CoffeBack/coffe-2.jpeg";
 import CoffeeBack3 from "../assests/CoffeBack/Dessert-2.jpg";
 import Sidebar from "../components/sidebar";
-const CakeComponent = () => {
+const TeaComponent = () => {
   const { selectedCategoryId } = useCategory();
 
   const [products, setProducts] = useState([]);
@@ -98,7 +96,7 @@ const CakeComponent = () => {
           &#10095;
         </button> */}
       </div>
-      <h1 className="Yekan h1">{loading ? "...Loading" : products[5]?.name}</h1>{" "}
+      <h1 className="Yekan h1">{loading ? "...Loading" : products[4]?.name}</h1>{" "}
       <div className="container-rows">
         <div className="name-product">
           {filteredProducts.map((item) => {
@@ -123,6 +121,6 @@ const CakeComponent = () => {
   );
 };
 
-const Cake = MotionHoc(CakeComponent);
+const Tea = MotionHoc(TeaComponent);
 
-export default Cake;
+export default Tea;

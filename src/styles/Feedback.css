@@ -2,26 +2,27 @@
   background-image: url(../assests/Wall-Ligten.jpg);
   height: 100vh;
   width: 100vw;
-  object-fit: cover;
+  object-fit: fill;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .Container-Feedback .display {
-  height: 50vh;
+  height: 80vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
   row-gap: 1rem;
 }
 
 .Container-Feedback .display .box {
-  /* border: 2px solid #000000; */
   border-radius: 7px;
   padding: 1.5rem 0.3rem;
-  /* background: rgb(0, 10, 247, 0.1); */
+}
+.Container-Feedback .display p{
+  text-align: center;
 }
 .Container-Feedback .display .box h1 {
   background: linear-gradient(to bottom, #f7f7f7 100%, #1b1b1b 0%);

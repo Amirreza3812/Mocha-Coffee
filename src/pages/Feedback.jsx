@@ -16,7 +16,6 @@ const Feedback = () => {
           placeholder="نظر خود را بنویسید..."
           rows={5}
         />
-        <br />
         <NavLink to="coffee">
           <button className="submit-feedback">رفتن به منو</button>
         </NavLink>

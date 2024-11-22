@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import MotionHoc from "./MotionHoc";
-import "../styles/soon.css";
+import "../styles/rows.css";
 import { useCategory } from "./CategoryContext";
 import CoffeeBack from "../assests/CoffeBack/coffe-2.jpeg";
-import BackDeser from "../assests/CoffeBack/Fasst-food.jpg";
+import BackDeser from "../assests/CoffeBack/desr8.jpg";
 import Sidebar from "../components/sidebar";
 
-const PizzaComponent = () => {
+const MoktelComponent = () => {
   const { selectedCategoryId } = useCategory();
   // console.log(selectedCategoryId);
+
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -56,18 +57,24 @@ const PizzaComponent = () => {
     <>
       <Sidebar />
       <img src={BackDeser} alt="" className="Back-img" />
-      <h1 className="comming-soon Yekan">
-        {loading ? "Loading..." : products[3]?.name}
-      </h1>
+      <h1 className="h1">{loading ? "...Loading" : products[2]?.name}</h1>
       <div className="container-rows">
         <div className="name-product">
           {filteredProducts.map((item) => {
-            return <p className="rows font-Sans">{item.name}</p>;
+            return (
+              <p className="rows" key={item.id}>
+                {item.name}
+              </p>
+            );
           })}
         </div>
         <div className="price-product">
           {filteredProducts.map((item) => {
-            return <p className="price-rows font-Sans">{item.price}</p>;
+            return (
+              <p className="price-rows" key={item.id}>
+                {item.price}
+              </p>
+            );
           })}
         </div>
       </div>
@@ -75,6 +82,6 @@ const PizzaComponent = () => {
   );
 };
 
-const Pizza = MotionHoc(PizzaComponent);
+const Moktel = MotionHoc(MoktelComponent);
 
-export default Pizza;
+export default Moktel;

@@ -7,8 +7,12 @@ import { NavLink } from "react-router-dom";
 import logo from "../assests/logo.svg";
 import Coffe from "../assests/Coffe.svg";
 import Cake from "../assests/Cake.svg";
-import Drinks from "../assests/Drink.svg";
-import Pizza from "../assests/Pizza.svg";
+import Moktel from "../assests/Drink.svg";
+import Breakfast from "../assests/breakfast.svg";
+import Colddrink from "../assests/cold.svg";
+import Tea from "../assests/Tea.svg";
+import Pishfood from "../assests/appetizer.png";
+
 import { useCategory } from "../pages/CategoryContext";
 
 const Container = styled.div`
@@ -59,10 +63,10 @@ const Button = styled.button`
 const SidebarContainer = styled.div`
   background: var(--black);
   width: 3.5rem;
-  height: 80vh;
+  height: 90vh;
   margin-top: 1rem;
   border-radius: 30px 0px 0px 30px;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,13 +93,12 @@ const SlickBar = styled.ul`
   align-items: center;
   background: var(--black);
   position: absolute;
-  top: 6rem;
+  top: 3rem;
   z-index: 10;
   left: 0;
   width: ${(props) => (props.clicked ? "12rem" : "3.5rem")};
   transition: all 0.8s ease;
   border-radius: 30px 0px 0px 30px;
-  padding: 2rem 0;
   right: 0;
 `;
 
@@ -177,11 +180,17 @@ const Sidebar = ({ url }) => {
       case 0:
         return Coffe;
       case 1:
-        return Cake;
+        return Colddrink;
       case 2:
-        return Drinks;
+        return Moktel;
       case 3:
-        return Pizza;
+        return Breakfast;
+      case 4:
+        return Tea;
+      case 5:
+        return Cake;
+      case 6:
+        return Pishfood;
       default:
         return Coffe; // Default icon
     }
@@ -193,11 +202,17 @@ const Sidebar = ({ url }) => {
       case 0:
         return "/coffee";
       case 1:
-        return "/cake";
+        return "/cold";
       case 2:
-        return "/drinks";
+        return "/moktel";
       case 3:
-        return "/soon";
+        return "/brackfast";
+      case 4:
+        return "/tea";
+      case 5:
+        return "/dessert";
+      case 6:
+        return "/pishfood";
       default:
         return "/"; // Default link
     }

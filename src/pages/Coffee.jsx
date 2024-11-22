@@ -84,7 +84,7 @@ const CoffeeComponent = ({ url }) => {
         </div>
       </div>
 
-      <h1>{loading ? "Loading..." : category[0]?.name}</h1>
+      <h1 className="Yekan h1">{loading ? "...Loading" : category[0]?.name}</h1>
       <div className="container-rows">
         <div className="name-product">
           {products.map((item) => (
